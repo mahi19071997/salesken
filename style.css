@@ -1,3 +1,17 @@
-body{
-    box-sizing: border-box;
+#buttn{    
+    border-radius:10%;
+    background-color:rgb(5, 33, 48);
+    color:rgb(179, 222, 247);
+    font-size: 60px;
+    width: 200px;
+    height: 90px;
+    margin:50px;
+}
+#buttn:hover{
+    color:rgb(18, 91, 119);
+    background-color:rgb(199, 234, 243);
+}
+#myCanvas{
+    margin: auto;
+    margin-left: 14%;
 }
