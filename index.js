@@ -4,19 +4,19 @@ var nums = [
   54,
   48,
   37,
-  7,
+  -7,
   36,
   86,
   79,
   68,
-  10,
+  -10,
   92,
   66,
   44,
   35,
   78,
   88,
-  14,
+  -14,
   39,
   42,
   68,
@@ -26,7 +26,7 @@ var nums = [
   29,
   96,
   45,
-  25,
+  -25,
   82,
   54,
   58,
@@ -34,10 +34,10 @@ var nums = [
   68,
   69,
   70,
-  4,
+  -4,
   28,
   89,
-  12,
+  -12,
   32,
   3,
   97,
@@ -46,7 +46,7 @@ var nums = [
   26,
   23,
   48,
-  39,
+  -39,
   13,
   65,
   79,
@@ -55,7 +55,7 @@ var nums = [
   48,
   93,
   78,
-  6,
+  -6,
   60,
   33,
   43,
@@ -66,10 +66,10 @@ var nums = [
   94,
   86,
   41,
-  16,
+  -16,
   77,
   23,
-  37,
+  -37,
   44,
   88,
   7,
@@ -78,22 +78,22 @@ var nums = [
   24,
   64,
   24,
-  11,
+  -11,
   39,
   22,
   56,
   86,
-  8,
+  -8,
   24,
   98,
   20,
   97,
-  2,
-  62,
+  27,
+  -43,
   45,
   2,
   40,
-  2,
+  -24,
   70,
   77,
   22,
@@ -102,11 +102,12 @@ var nums = [
 ];
 function playerFunc() {
   var canvas = document.getElementById("myCanvas");
-  var ctx = canvas.getContext("2d");
+  var can = canvas.getContext("2d");
   var myAudio = document.getElementById("myAudio");
   var barWidth = 10;
   var startX = 0;
-  var startY = 300;
+  var startY = 230;
+  var tagName = ["T10", "T20", "T60", "T90"]
   var button = document.getElementById("buttn");
   button.className = "fa fa-play";
   var cnt = 0;
@@ -122,28 +123,36 @@ function playerFunc() {
       cnt = 0;
     }
   }
-  ctx.fillStyle = "grey";
-  ctx.strokeStyle = "black"
+  can.fillStyle = "#069968";
+  can.strokeStyle = "black"
+  var val = 30
+  var cnt = 0;
   for (var i = 0; i < nums.length; i++) {
     var barHgt = nums[i];
-    var cnt = 0;
-    ctx.fillRect(startX, startY - barHgt, barWidth, barHgt);
+    if (barHgt % 11 == 0 && cnt < 4) {
+      can.font = "14pt sans-serif"
+      can.strokeStyle="red"
+      can.strokeText(tagName[cnt++], val, 80)
+    }
+    val = val + 40;
+
+    can.fillRect(startX, startY - barHgt, barWidth, barHgt);
     startX += barWidth;
   }
-  myAudio.addEventListener("timeupdate", function() {
+  myAudio.addEventListener("timeupdate", function () {
     var duration = myAudio.duration;
     var currentTime = myAudio.currentTime;
     var perComp = (currentTime / duration) * 100;
     var barsComp = Math.floor(100 / 100) * perComp;
     if (duration > 0) {
-      ctx.clearRect(0, 0, barWidth, barHgt);
+      can.clearRect(0, 0, barWidth, barHgt);
       var barWidth = 10;
       var startX = 0;
-      var startY = 300;
+      var startY = 230;
       for (var i = 0; i < nums.length; i++) {
         var barHgt = nums[i];
-        i <= barsComp ? (ctx.fillStyle = "blue") : (ctx.fillStyle = "gray");
-        ctx.fillRect(startX, startY - barHgt, barWidth, barHgt);
+        i <= barsComp ? (can.fillStyle = "blue") : (can.fillStyle = "#069968");
+        can.fillRect(startX, startY - barHgt, barWidth, barHgt);
         startX += barWidth;
       }
     }

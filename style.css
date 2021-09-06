@@ -1,17 +1,27 @@
 #buttn{    
-    border-radius:10%;
+    border-radius:40%;
     background-color:rgb(5, 33, 48);
     color:rgb(179, 222, 247);
     font-size: 60px;
-    width: 200px;
+    width: 120px;
     height: 90px;
     margin:50px;
+    margin-left: 44%
 }
 #buttn:hover{
-    color:rgb(18, 91, 119);
-    background-color:rgb(199, 234, 243);
+    color:rgb(7, 48, 65);
+    background-color:#babcfa;
 }
 #myCanvas{
     margin: auto;
+    background-color:beige;
     margin-left: 14%;
+}
+
+div{
+    font-size:50px;
+    font-weight:bold;
+    width: 30%;
+    margin: auto;
+    margin-top: 20px;
 }
